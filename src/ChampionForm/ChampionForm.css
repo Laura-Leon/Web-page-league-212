@@ -1,0 +1,10 @@
+.ChampionForm label {
+    display: block;
+    margin-bottom: 20px;
+}
+.ChampionForm input {
+    display: block;
+}
+.ChampionForm__error{
+    color: red;
+}

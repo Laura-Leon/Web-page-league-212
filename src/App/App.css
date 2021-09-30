@@ -1,0 +1,30 @@
+.App{
+    background-color: rgb(31, 39, 39); 
+}
+
+.App__nav {
+    background-color: rgb(25, 32, 32);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.App__img{
+    display: flex;
+    margin: 0;
+    padding: 10px;
+    width: 3%;
+}
+.App__LinkGroup{
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+.Carrousel{
+    display: flex;
+    flex-direction: row;
+}
+.App__Section{
+margin-left: 60px;
+margin-right: 60px;
+
+}
