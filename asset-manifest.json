@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Web-page-league-212/static/css/main.f22a95d7.chunk.css",
-    "main.js": "/Web-page-league-212/static/js/main.fe0ffd17.chunk.js",
-    "main.js.map": "/Web-page-league-212/static/js/main.fe0ffd17.chunk.js.map",
+    "main.js": "/Web-page-league-212/static/js/main.ed771e5b.chunk.js",
+    "main.js.map": "/Web-page-league-212/static/js/main.ed771e5b.chunk.js.map",
     "runtime-main.js": "/Web-page-league-212/static/js/runtime-main.d6175fc7.js",
     "runtime-main.js.map": "/Web-page-league-212/static/js/runtime-main.d6175fc7.js.map",
     "static/js/2.cdd007bb.chunk.js": "/Web-page-league-212/static/js/2.cdd007bb.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.d6175fc7.js",
     "static/js/2.cdd007bb.chunk.js",
     "static/css/main.f22a95d7.chunk.css",
-    "static/js/main.fe0ffd17.chunk.js"
+    "static/js/main.ed771e5b.chunk.js"
   ]
 }
