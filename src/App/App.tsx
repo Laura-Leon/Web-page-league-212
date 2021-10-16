@@ -6,6 +6,7 @@ import { Link } from '../Link/Link';
 import { ChampionForm} from '../ChampionForm/ChampionForm';
 import {ChampionProps} from '../Champion/Champion';
 import { title } from 'process';
+import { HashRouter,Route } from 'react-router-dom';
 
 
 type ChampionElemObj = {
@@ -75,13 +76,15 @@ const editIndex = championElems. findIndex((elem)=>{
   return false;
 });
 championElemsCopy[editIndex] = {
-  id:championElems[editIndex].id,
+  /*id:championElems[editIndex].id,
   img: championElems[editIndex].img,
   name:championElems[editIndex].name,
   rol:championElems[editIndex].rol,
   dificulty:championElems[editIndex].dificulty,
   description:championElems[editIndex].description,
-
+  */
+ ...championElems[editIndex],
+ ...editChampionElem,
 }
 setChampionElems(championElemsCopy);
  
@@ -99,34 +102,41 @@ const championElemsCopy = championElems.filter((elem)=>{
 setChampionElems(championElemsCopy);
 }
   return (
-    <div>
+    <HashRouter>
+        <div>
        <nav className="App__nav">
     <img className="App__img" alt=" " src="https://universe.leagueoflegends.com/images/LOL.png" />
     <div className="App__LinkGroup">
       <Link
-      actives
+      
         text="Home"
-        url="https://www.youtube.com/watch?v=fmOEKOjyDxU" />
+        url="/form" />
       <Link
         text="Champion"
-        url="https://www.youtube.com/watch?v=fmOEKOjyDxU"></Link>
+        url="champlist"></Link>
       <Link
         text="Region"
-        url="https://www.youtube.com/watch?v=fmOEKOjyDxU"></Link>
+        url=""></Link>
          <Link
         text="Skins"
-        url="https://www.youtube.com/watch?v=fmOEKOjyDxU"></Link>
+        url=""></Link>
     </div>
     <img className="App__img" alt=" "src="https://www.pinclipart.com/picdir/big/73-739007_icon-profile-picture-circle-png-clipart.png" />
   </nav>
-  <ChampionForm 
+
+  <Route path="/form">
+
+     <ChampionForm 
   editId= {editId}
   type= {formType}
   onCreate={handleCreate} 
   onEdit={handleEdit}> 
   </ChampionForm>
 
-  {championElems.map((elem)=>{
+  </Route>
+
+  <Route path="/champlist">
+{championElems.map((elem)=>{
     return <Champion key={elem.id} 
      name={elem.name}
      id = {elem.id}
@@ -137,7 +147,12 @@ setChampionElems(championElemsCopy);
         onDelete={handleDelete}
         onEdit={handleBeginEdit}/> 
   })}
+</Route>
+ 
+  
     </div>
+    </HashRouter>
+  
    
   )
 }

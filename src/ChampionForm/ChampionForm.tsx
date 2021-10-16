@@ -1,5 +1,6 @@
 
 import React from "react";
+import { useHistory } from "react-router";
 import { ChampionProps } from '../Champion/Champion';
 import './ChampionForm.css';
 
@@ -24,7 +25,7 @@ interface ChampionFormProps {
 }
 
 export const ChampionForm: React.FC<ChampionFormProps> = ({ editId, type, onCreate, onEdit }) => {
-
+const history = useHistory();
     const [formSubmitted, setFormSubmitted] = React.useState(false);
 
     const [name, setName] = React.useState(' ');
@@ -67,6 +68,17 @@ export const ChampionForm: React.FC<ChampionFormProps> = ({ editId, type, onCrea
                         description: description
 
                     });
+                    setName('');
+                    setImg('');
+                    setDificulty('');
+                    setRol('');
+                    setDescription('');
+                    setFormSubmitted(false);
+                    history.push('/champlist');
+
+
+
+
         }else if(type === 'Edit'&& iscaractValid){
             onEdit(editId!,{ img: img,
                 name: name,
