@@ -1,5 +1,5 @@
 
-export type SkinElemElemObj = {
+export type SkinElemObj = {
     id: number;
     name: string;
     img: string;

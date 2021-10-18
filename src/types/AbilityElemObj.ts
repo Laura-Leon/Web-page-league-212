@@ -1,9 +1,9 @@
 
-export type HabilityElemObj = {
+export type AbilityElemObj = {
     id: number;
     name: string;
     img: string;
-    key: string;
+    keyboard: string;
     description: string;
   
   }

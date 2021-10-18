@@ -1,5 +1,5 @@
-import { HabilityElemObj } from "./HabilityElemObj";
-import { SkinElemElemObj } from "./SkinElemObj";
+import { AbilityElemObj } from "./AbilityElemObj";
+import { SkinElemObj } from "./SkinElemObj";
 
 
 export type ChampionElemObj = {
@@ -10,7 +10,7 @@ export type ChampionElemObj = {
     dificulty: string;
     description: string;
 
-    habilities: HabilityElemObj[];
-    skins:SkinElemElemObj[];
+    abilities: AbilityElemObj[];
+   // skins:SkinElemObj[];
   
   }

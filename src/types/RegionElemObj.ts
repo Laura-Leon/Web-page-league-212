@@ -1,3 +1,4 @@
+import { ChampionElemObj } from "./ChampionElemObj";
 
 export type RegionElemObj = {
     id: number;
@@ -8,4 +9,5 @@ export type RegionElemObj = {
     championCount:number;
     likes:string;
   
+    champion: ChampionElemObj[];
   }

@@ -65,7 +65,7 @@ const history = useHistory();
                         name: name,
                         rol: rol,
                         dificulty: dificulty,
-                        description: description
+                        description: description,
 
                     });
                     setName('');

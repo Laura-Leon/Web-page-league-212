@@ -6,10 +6,13 @@ import { Link } from '../Link/Link';
 import { ChampionForm } from '../ChampionForm/ChampionForm';
 import { ChampionProps } from '../Champion/Champion';
 import { title } from 'process';
-import { HashRouter, Route, Switch,Redirect } from 'react-router-dom';
+import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
 import ChampionDetails from '../ChampionDetails/ChampionDetails';
 import Page404 from '../Page404/Page404';
 import { ChampionElemObj } from '../types/ChampionElemObj';
+import { AbilityElemObj } from '../types/AbilityElemObj';
+import { SkinElemObj } from '../types/SkinElemObj';
+
 
 
 
@@ -27,7 +30,25 @@ function App() {
       name: 'leona',
       rol: 'tank',
       dificulty: 'Easy',
-      description: 'gay solary in gay panic'
+      description: 'my deardiana....',
+      abilities: [
+        {
+          id: 0,
+          name: 'Solar Punch',
+          img: 'https://static.wikia.nocookie.net/leagueoflegends/images/e/eb/Leona_Shield_of_Daybreak.png/revision/latest/zoom-crop/width/360/height/360?cb=20130929123016',
+          keyboard: 'Q',
+          description: 'for your love immm...',
+        }
+      ],
+     /* skins:[
+        {
+          id:0.1,
+          name: 'Dawnbringer Leona',
+          img: 'https://cdnb.artstation.com/p/assets/images/images/036/132/497/large/qi-mang-10m.jpg?1616794088',
+         theme: 'Eclipse',
+          description: 'In the mirror of the glass...'
+        }
+      ]*/
     }
   ]);
 
@@ -37,9 +58,21 @@ function App() {
     rol: string;
     dificulty: string;
     description: string;
+
+    //skins:[]
   }) => {
     console.log('new Champion', newChampion);
-
+    const arrayCopy = championElems.slice(); // copia del arreglo
+    arrayCopy.push({ //agrega nuevo elemento con la informacion recibida
+        id:Math.random(),
+        img: newChampion.img,
+        name: newChampion.name,
+        rol: newChampion.rol,
+        dificulty: newChampion.dificulty,
+        description: newChampion.description,
+        abilities: [],
+    });
+/*
     const newArray = [
       ...championElems,
       {
@@ -48,18 +81,20 @@ function App() {
         name: newChampion.name,
         rol: newChampion.rol,
         dificulty: newChampion.dificulty,
-        description: newChampion.description
+        description: newChampion.description,
+        abilities: [],
 
       }
-    ]
-    setChampionElems(newArray)
+    ]*/ 
+
+    setChampionElems(arrayCopy);
   }
   const handleBeginEdit = (editId: number) => {
     setEditId(editId);
     setFormType('Edit');
-
   }
-  const handleEdit = (editId: number, editChampionElem: {
+
+  const handleEdit = (editId: number, editChampionElem: { //edit champion info
     name: string;
     img: string;
     rol: string;
@@ -87,6 +122,7 @@ function App() {
     setChampionElems(championElemsCopy);
 
   }
+
   const handleDelete = (deleteId: number) => {
     console.log("delete");
 
@@ -99,6 +135,27 @@ function App() {
     });
     setChampionElems(championElemsCopy);
   }
+
+  const handleCreateAbility = (champioinElemId: number, newAbilityElem: AbilityElemObj) => {
+    const championElemsCopy = championElems.slice();
+    const editIndex = championElems.findIndex((elem) => {
+      if (elem.id === champioinElemId) {
+        return true;
+      }
+      return false;
+    });
+    championElemsCopy[editIndex] = {
+      ...championElems[editIndex],
+      abilities: [
+        ...championElems[editIndex].abilities,
+        newAbilityElem
+      ]
+    }
+    setChampionElems(championElemsCopy);
+
+  }
+
+
   return (
     <HashRouter>
       <div>
@@ -142,20 +199,21 @@ function App() {
                 dificulty={elem.dificulty}
                 description={elem.description}
                 img={elem.img}
-                type = "Edit"
+                type="Edit"
                 onDelete={handleDelete}
                 onEdit={handleBeginEdit} />
             })}
           </Route>
           <Route path="/details/:id">
-            <ChampionDetails   list = {championElems}>
+            <ChampionDetails list={championElems}
+              onCreateAbilities={handleCreateAbility}>
             </ChampionDetails>
           </Route>
           <Route path="/404">
             <Page404></Page404>
           </Route>
-          <Redirect to ="/404">
-          <Page404></Page404>
+          <Redirect to="/404">
+            <Page404></Page404>
 
           </Redirect>
         </Switch>
