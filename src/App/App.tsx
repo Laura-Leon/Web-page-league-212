@@ -202,7 +202,10 @@ function App() {
                 type="Edit"
                 onDelete={handleDelete}
                 onEdit={handleBeginEdit} />
+
+                
             })}
+           
           </Route>
           <Route path="/details/:id">
             <ChampionDetails list={championElems}
