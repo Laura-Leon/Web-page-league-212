@@ -4,6 +4,9 @@ import { CodeFixAction } from "typescript";
 
 import './Champion.css';
 
+import ReactDOM from 'react-dom';
+import Button from '@mui/material/Button';
+
 
 export interface ChampionProps {
     id: number;
@@ -37,27 +40,21 @@ export const Champion: React.FC<ChampionProps> = ({ img, name, rol, dificulty, d
     const handleView: React.MouseEventHandler<HTMLButtonElement> = () => {
         history.push(`/details/${id}`);
     }
-    return <div className="Champion">
-        <img className="Champion__img" alt="champ" src={img} ></img>
+    return <div className="champion__Wrapper">
+        <div className = "champion__card">
 
-        <div className="Champion__container">
-            {type && <><button onClick={handleView}>view</button> 
-            {onDelete && <button onClick={handleDelete}>Delete</button>}
-            {onEdit && <button onClick={handleEdit}>Edit</button>}
-            </>
-            }
+            <img className="Champion__img" alt="champ" src={img} ></img>
 
-
-
-
-            <h3 className="Champion__h3">DIFICULTY:{dificulty}</h3>
-            <h3 className="Champion__h3">ROL{rol}</h3>
-            <h1 className="Champion__h1">{name}</h1>
-            <h3 className="Champion__h3">BIOGRAPHY</h3>
-            <p className="Champion__p">{description}</p>
-
-
-
+            <div className="Champion__info">
+               
+                <h1 className="Champion__h1">{name}</h1>
+                
+                {type && <><Button variant="outlined" onClick={handleView}>view</Button>
+                    {onDelete && <Button variant="outlined" color="error" size="small" onClick={handleDelete}>Delete</Button>}
+                    {onEdit && <Button variant="outlined" onClick={handleEdit}>Edit</Button>}
+                </>
+                }
+            </div>
         </div>
     </div>
 }

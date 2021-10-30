@@ -1,8 +1,18 @@
 
-import React from "react";
+
+import * as React from 'react';
 import { useHistory } from "react-router";
 import { ChampionProps } from '../Champion/Champion';
 import './ChampionForm.css';
+import ReactDOM from 'react-dom';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import { makeStyles } from '@mui/material/styles';
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
+import Stack from '@mui/material/Stack';
+
 
 
 interface ChampionFormProps {
@@ -23,6 +33,8 @@ interface ChampionFormProps {
     }) => void;
 
 }
+
+
 
 export const ChampionForm: React.FC<ChampionFormProps> = ({ editId, type, onCreate, onEdit }) => {
 const history = useHistory();
@@ -49,7 +61,7 @@ const history = useHistory();
     const handleDescriptionChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
         setDescription(event.target.value);
     }
-    const iscaractValid = name.length >= 1 || rol.length >= 1 || dificulty.length >= 1 || description.length >= 1;
+    const iscaractValid = name.length >= 2 || rol.length >= 2 || dificulty.length >= 2 || description.length >= 10;
     const isImgValid = img.length >= 10;
 
     const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event: any) => {
@@ -91,69 +103,91 @@ const history = useHistory();
     }
 
     
-
     return (
 
 
         <form className="ChampionForm"
             onSubmit={handleSubmit}>
 
-            <h2> {type === 'create' ? 'New' : 'Edit'}ChampElem {editId}</h2>
+            <h1> {type === 'create' ? 'New' : 'Edit'} Champion {editId}</h1>
 
 
             <label>
                 Champion's Name
-                <input name="name" type="text"
+                <TextField 
+                label =" name" variant="outlined"  name="name" type="text"
                     onChange={handleNameChange}
                     value={name} />
                 {formSubmitted && !iscaractValid &&
-                    <p className="ChampionForm__error">Add a Name</p>
+                    <Alert severity="error">
+                    <AlertTitle>Error</AlertTitle>
+                    You need to add a name— <strong>check it out!</strong>
+                  </Alert>
                 }
 
             </label>
 
             <label>
                 Img URL
-                <input name="img" type="text"
+                <TextField label ="URL Img" variant="outlined" name="img" type="text" 
                     onChange={handleImgChange}
                     value={img} />
                 {formSubmitted && !isImgValid &&
-                    <p className="ChampionForm__error">Url must be at least 10 caracters long</p>
+                   <Alert severity="error">
+                   <AlertTitle>Error</AlertTitle>
+                   Url must be at least 10 caracters long<strong>check it out!</strong>
+                 </Alert> 
+                   
                 }
 
             </label>
 
             <label>
                 Rol
-                <input name="rol" type="text"
+                <TextField label =" Champion Rol" variant="outlined" name="rol" type="text"
                     onChange={handleRolChange}
                     value={rol} />
                 {formSubmitted && !iscaractValid &&
-                    <p className="ChampionForm__error">Add a rol</p>
+                    <Alert severity="error">
+                    <AlertTitle>Error</AlertTitle>
+                    You need add a rol<strong>check it out!</strong>
+                  </Alert> 
+                
+               
                 }
 
             </label>
             <label>
                 Dificulty
-                <input name="dificulty" type="text"
+                <TextField label ="Dificulty" variant="outlined" name="dificulty" type="text"
                     onChange={handleDificultyChange}
                     value={dificulty} />
                 {formSubmitted && !iscaractValid &&
-                    <p className="ChampionForm__error">Add a dificulty</p>
+                    <Alert severity="error">
+                    <AlertTitle>Error</AlertTitle>
+                    You need add dificulty <strong>check it out!</strong>
+                  </Alert> 
+                
                 }
 
             </label>
             <label>
                 Description
-                <input name="description" type="text"
+                <TextField  label ="Descirption" variant="outlined" multiline 
+                name="description" type="text"
                     onChange={handleDescriptionChange}
                     value={description} />
                 {formSubmitted && !iscaractValid &&
-                    <p className="ChampionForm__error">Add a description</p>
+                      <Alert severity="error">
+                      <AlertTitle>Error</AlertTitle>
+                      You need add a description<strong>check it out!</strong>
+                    </Alert> 
+                  
                 }
 
             </label>
-            <button>{type === 'create' ? 'Create new Champion' : 'Save changes'}</button>
+            
+            <Button type ="submit" size ="medium" variant="contained"><span>{type === 'create' ? 'Create new Champion' : 'Save changes'}</span></Button>
 
         </form>
     );

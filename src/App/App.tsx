@@ -15,8 +15,6 @@ import { SkinElemObj } from '../types/SkinElemObj';
 
 
 
-
-
 function App() {
   const [formType, setFormType] = React.useState<'create' | 'Edit'>('create');
   const [editId, setEditId] = React.useState<number | null>(null);
@@ -40,15 +38,15 @@ function App() {
           description: 'for your love immm...',
         }
       ],
-     /* skins:[
-        {
-          id:0.1,
-          name: 'Dawnbringer Leona',
-          img: 'https://cdnb.artstation.com/p/assets/images/images/036/132/497/large/qi-mang-10m.jpg?1616794088',
-         theme: 'Eclipse',
-          description: 'In the mirror of the glass...'
-        }
-      ]*/
+      /* skins:[
+         {
+           id:0.1,
+           name: 'Dawnbringer Leona',
+           img: 'https://cdnb.artstation.com/p/assets/images/images/036/132/497/large/qi-mang-10m.jpg?1616794088',
+          theme: 'Eclipse',
+           description: 'In the mirror of the glass...'
+         }
+       ]*/
     }
   ]);
 
@@ -64,28 +62,28 @@ function App() {
     console.log('new Champion', newChampion);
     const arrayCopy = championElems.slice(); // copia del arreglo
     arrayCopy.push({ //agrega nuevo elemento con la informacion recibida
-        id:Math.random(),
-        img: newChampion.img,
-        name: newChampion.name,
-        rol: newChampion.rol,
-        dificulty: newChampion.dificulty,
-        description: newChampion.description,
-        abilities: [],
+      id: Math.random(),
+      img: newChampion.img,
+      name: newChampion.name,
+      rol: newChampion.rol,
+      dificulty: newChampion.dificulty,
+      description: newChampion.description,
+      abilities: [],
     });
-/*
-    const newArray = [
-      ...championElems,
-      {
-        id: Math.random(),
-        img: newChampion.img,
-        name: newChampion.name,
-        rol: newChampion.rol,
-        dificulty: newChampion.dificulty,
-        description: newChampion.description,
-        abilities: [],
-
-      }
-    ]*/ 
+    /*
+        const newArray = [
+          ...championElems,
+          {
+            id: Math.random(),
+            img: newChampion.img,
+            name: newChampion.name,
+            rol: newChampion.rol,
+            dificulty: newChampion.dificulty,
+            description: newChampion.description,
+            abilities: [],
+    
+          }
+        ]*/
 
     setChampionElems(arrayCopy);
   }
@@ -158,7 +156,7 @@ function App() {
 
   return (
     <HashRouter>
-      <div>
+      <div className="principal">
         <nav className="App__nav">
           <img className="App__img" alt=" " src="https://universe.leagueoflegends.com/images/LOL.png" />
           <div className="App__LinkGroup">
@@ -191,8 +189,9 @@ function App() {
           </Route>
 
           <Route path="/champlist">
+           
             {championElems.map((elem) => {
-              return <Champion key={elem.id}
+              return  <Champion key={elem.id}
                 name={elem.name}
                 id={elem.id}
                 rol={elem.rol}
@@ -202,10 +201,11 @@ function App() {
                 type="Edit"
                 onDelete={handleDelete}
                 onEdit={handleBeginEdit} />
+               
 
-                
+
             })}
-           
+
           </Route>
           <Route path="/details/:id">
             <ChampionDetails list={championElems}
@@ -216,12 +216,8 @@ function App() {
             <Page404></Page404>
           </Route>
           <Redirect to="/404">
-            <Page404></Page404>
-
           </Redirect>
         </Switch>
-
-
 
       </div>
     </HashRouter>
