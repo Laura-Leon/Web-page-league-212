@@ -10,7 +10,10 @@ export type ChampionElemObj = {
     dificulty: string;
     description: string;
 
+    regionId: number;
+
     abilities: AbilityElemObj[];
    // skins:SkinElemObj[];
+
   
   }

@@ -1,10 +1,26 @@
-
-.champion__wrapper{
+.Champion__h1{
+    font-family: 'Zen Old Mincho';
+    font-weight: bolder;
+    color: #BAB090;
+    text-align: center;
+}
+h2{
+    font-family: 'Zen Old Mincho';
+    font-weight: bolder;
+}
+p{
+    font-family: 'Zen Old Mincho';
+font-weight: bolder;
+}
+.champion__Wrapper{
 display: flex;
-width: 70%;
-justify-content: space-around;
+padding-top: 20px;
+padding-bottom: 20px;
+padding-left: 10px;
+padding-right: 20px;
 }
 .champion__card{
+    
 width:  280px;
 height: 360px;
 padding: 2em, 1rem;
@@ -30,6 +46,8 @@ transition: 0.3s ease-in-out;
     z-index: 2;
     transition: 0.5s all;
     opacity: 0;
+    border: 1px solid #FAC04F;
+
 
 }
 .champion__card:hover:before{
@@ -45,6 +63,10 @@ transition: 0.3s ease-in-out;
     left: 0;
            }
  .champion__card .Champion__info{
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     width: 100%;
             position: relative;
             z-index: 3;
             color: #fff;
@@ -55,15 +77,31 @@ transition: 0.3s ease-in-out;
 .champion__card:hover .Champion__info{
     opacity: 1;
     transform: translateY(0px);
-
 }
-.champion__card .Champion__info .Champion__h1{
-    margin: 0;
+.Champion__h1{
+
+    
+    text-align: center;
+    max-width: 200px;
+ 
 }
 .champion__card .Champion__info p{
     letter-spacing: 1px;
     font-size: 15px;
     margin-top: 8px;
     margin-bottom:20px;
+}
+.champion__title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 280px;
+ 
+   padding: 0;
+   margin: 0;
+    border: 1px solid #FAC04F;
+ 
+
 }
 

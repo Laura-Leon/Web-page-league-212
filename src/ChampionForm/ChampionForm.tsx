@@ -24,6 +24,7 @@ interface ChampionFormProps {
         rol: string;
         dificulty: string;
         description: string;
+      
     }) => void;
     onEdit: (id: number, editChampionElem: {
         name: string, img: string;

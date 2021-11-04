@@ -41,14 +41,18 @@ export const Champion: React.FC<ChampionProps> = ({ img, name, rol, dificulty, d
         history.push(`/details/${id}`);
     }
     return <div className="champion__Wrapper">
-        <div className = "champion__card">
+        <div className="champion__card">
 
             <img className="Champion__img" alt="champ" src={img} ></img>
 
+            <div className="champion__title">
+
+            </div>
             <div className="Champion__info">
-               
-                <h1 className="Champion__h1">{name}</h1>
-                
+                <div className="champion__title">
+                    <h1 className="Champion__h1">{name}</h1>
+                </div>
+
                 {type && <><Button variant="outlined" onClick={handleView}>view</Button>
                     {onDelete && <Button variant="outlined" color="error" size="small" onClick={handleDelete}>Delete</Button>}
                     {onEdit && <Button variant="outlined" onClick={handleEdit}>Edit</Button>}

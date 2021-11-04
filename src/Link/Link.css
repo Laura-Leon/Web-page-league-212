@@ -1,13 +1,16 @@
 .Link{
-    font-family: sans-serif;
+  font-family: 'Zen Old Mincho';
+
+font-weight: bolder;
+font-size: 18px;
     padding: 12px 14px 12px 14px;
     color: white;
     text-decoration: none;
 }
 .Link--active{
-  font-family: sans-serif;
+
   padding: 12px 14px 12px 14px;
-  color: rgb(240, 210, 75);
+  color:  #FAC04F;
   text-decoration: none;
 
 }

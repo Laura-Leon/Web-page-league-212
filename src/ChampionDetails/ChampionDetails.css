@@ -1,0 +1,91 @@
+.details__h4{
+    font-family: 'Zen Old Mincho';
+margin-top: 40px;
+margin-bottom: 0;
+    padding: 0;
+}
+.details__h2{
+    font-family: 'Zen Old Mincho';
+    font-weight: bolder;
+    margin: 0;
+    padding: 0;
+    font-size: 36px;
+  
+  
+}
+.habilities__h2{
+    font-family: 'Zen Old Mincho';
+    font-weight: bolder;
+    margin-top: 20px;
+    padding: 0;
+    font-size: 36px;
+}
+
+.details___name{
+    font-family: 'Zen Old Mincho';
+    font-weight: bolder;
+    color: #ffffff;
+ font-size: 64px;
+ margin-top: 40px;
+    margin-bottom: 24px;
+    padding: 0;
+}
+.details__p{
+    font-family: 'Zen Old Mincho';
+font-weight: bolder;
+margin: 0;
+    padding: 0;
+    font-size: 18px;
+}
+.details__container{
+    position: relative;
+   width: 100%;
+    height: 1000px;
+    padding: 2em, 1rem;
+    background: rgb(255, 255, 255,0.4);
+    display: flex;
+    justify-content: flex-end;
+}
+.details__img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+}
+.details__info{  
+    background: #0F1923;
+    background: linear-gradient(270deg, #0F1923 20%, #152230 60%, rgba(0,136,163,0) 95%);
+    height: 1000px;
+    width: 500px;
+  
+    display: flex;
+    flex-direction: column; 
+    z-index: 3;
+    color: #fff;   
+}
+.habilities__section{
+display: flex;
+justify-content: center;
+background-color: azure;
+
+}
+.habilities__container{
+    display: flex;
+    
+    flex-direction: column;
+    background-color: azure;
+    color: #121C27;
+    width: 1000px;
+}
+.habilities__view{
+display: flex;
+flex-direction: row;
+align-items: center;
+}
+.habilities__info{
+    margin:30px;
+}
+.habilities__img{
+width: 80px;
+height: 80px;
+}

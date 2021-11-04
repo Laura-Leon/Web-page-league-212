@@ -8,8 +8,9 @@
     border-radius: 15px;
     padding: 10px;
     margin: 20px;
-    border: white;
-    
+  
+
+    border: 1px solid rgb(255, 255, 255); 
 
 }
 

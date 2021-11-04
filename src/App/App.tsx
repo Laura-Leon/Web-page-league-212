@@ -12,6 +12,12 @@ import Page404 from '../Page404/Page404';
 import { ChampionElemObj } from '../types/ChampionElemObj';
 import { AbilityElemObj } from '../types/AbilityElemObj';
 import { SkinElemObj } from '../types/SkinElemObj';
+import line1 from '../images/line1.png';
+import line2 from '../images/line2.png';
+import leonah1 from '../images/leona_h1.png';
+
+
+
 
 
 
@@ -24,18 +30,18 @@ function App() {
 
     {
       id: 0,
-      img: 'https://cdnb.artstation.com/p/assets/images/images/036/132/497/large/qi-mang-10m.jpg?1616794088',
-      name: 'leona',
-      rol: 'tank',
+      img: 'https://www.pixel4k.com/wp-content/uploads/2019/11/solar-lunar-eclipse-leona-lol-league-of-legends-lol_1574105129.jpg',
+      name: 'Leona',
+      rol: 'Tank',
       dificulty: 'Easy',
-      description: 'my deardiana....',
+      description: 'Embuida con el fuego del sol, Leona es una guerrera sagrada de los Solari que defiende el monte Targon con su espada cenit y el escudo del amanecer. Su piel brilla con fuego estelar mientras sus ojos arden con el poder del Aspecto celestial dentro de ella.',
       abilities: [
         {
           id: 0,
           name: 'Solar Punch',
-          img: 'https://static.wikia.nocookie.net/leagueoflegends/images/e/eb/Leona_Shield_of_Daybreak.png/revision/latest/zoom-crop/width/360/height/360?cb=20130929123016',
+          img: 'https://64.media.tumblr.com/2f81751c6860614fa87e03c02b965f12/b7a6a0e97b82e3c1-cd/s500x750/3261355ae4aeade51e5ae34d65cd27445c01ddeb.png',
           keyboard: 'Q',
-          description: 'for your love immm...',
+          description: 'Leona uses her shield to perform her next basic attack, dealing bonus magic damage and stunning the target...',
         }
       ],
       /* skins:[
@@ -173,7 +179,9 @@ function App() {
             <Link
               text="Skins"
               url=""></Link>
+            
           </div>
+       
           <img className="App__img" alt=" " src="https://www.pinclipart.com/picdir/big/73-739007_icon-profile-picture-circle-png-clipart.png" />
         </nav>
         <Switch>
@@ -189,22 +197,38 @@ function App() {
           </Route>
 
           <Route path="/champlist">
-           
-            {championElems.map((elem) => {
-              return  <Champion key={elem.id}
-                name={elem.name}
-                id={elem.id}
-                rol={elem.rol}
-                dificulty={elem.dificulty}
-                description={elem.description}
-                img={elem.img}
-                type="Edit"
-                onDelete={handleDelete}
-                onEdit={handleBeginEdit} />
-               
+            <section className="App__title">
+              <img className="App__imgt" alt=" " src="https://universe.leagueoflegends.com/esimages/content_type_icon_champion__3nwJQ.png" />
+              <div className="championlist__cont">
+              <img className="App__line" alt=" " src={line1} />
+                <h1>Champions</h1>
+                <img className="App__line" alt=" " src={line2} />
+              </div>
+            </section>
+            <section className="champlist__container">
+            
+              {championElems.map((elem) => {
+                return <Champion key={elem.id}
+                  name={elem.name}
+                  id={elem.id}
+                  rol={elem.rol}
+                  dificulty={elem.dificulty}
+                  description={elem.description}
+                  img={elem.img}
+                  type="Edit"
+                  onDelete={handleDelete}
+                  onEdit={handleBeginEdit} />
+              })}
+            </section>
 
+            <footer>
+              <section className="footer__info">
+                <img className="footer__img" alt=" " src="https://ruinedking.com/assets/images/static/footer/riot.svg" />
+                <p> © 2021 Riot Games, Inc. Todos los derechos reservados.</p>
+                <img className="footer__img" alt=" " src="https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2019/04/01144512/footer-esrb-teen-violence_rome2web.jpg" />
+              </section>
+              </footer>
 
-            })}
 
           </Route>
           <Route path="/details/:id">

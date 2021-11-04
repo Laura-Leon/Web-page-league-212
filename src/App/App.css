@@ -1,9 +1,11 @@
+
 .App{
-    background-color: rgb(31, 39, 39); 
+    background-color: #0F1923; 
+  
 }
 
 .App__nav {
-    background-color: rgb(25, 32, 32);
+    background-color: #0F1923;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -30,11 +32,75 @@ margin-right: 60px;
 }
 .principal{
     background-image:
-    linear-gradient(to bottom, rgba(60, 63, 80, 0.52), rgba(16, 7, 41, 0.73)),
+    linear-gradient(to bottom, rgba(31, 31, 37, 0.8), rgba(5, 2, 15, 0.9)),
     url('../images/background.jpg');
     background-size: cover;
     background-repeat:no-repeat;
     background-position:center;
-    color: white;
+    color: white; 
+    min-height: 1000px;
+}
+.championlist__cont{
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+
+}
+.App__title{
+display: flex;
+flex-direction: column;
+align-items: center;
+margin: 20px;
+
+}
+.championlist__cont h1{
+margin: 16px;
+padding: 0;
+font-family: 'Zen Old Mincho';
+font-weight: bolder;
+font-size: 46px;
+}
+
+  
+.App__imgt{
+width: 40px;
+height: auto;
+}
+.champlist__container{
+    justify-content: center;
+    padding: 0;
+  margin-left: 100px;
+  margin-right: 100px;
+
+  list-style: none;
+ 
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+ 
    
+}
+.App__line{
+    height: 20px;
+}
+footer{
+
+    background-color: #0F1923;
+    display: flex;
+    justify-content: center;
+}
+.footer__info{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 300px;
+    width: 200px;
+
 }
