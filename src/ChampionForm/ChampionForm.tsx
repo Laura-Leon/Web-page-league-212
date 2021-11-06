@@ -12,7 +12,10 @@ import { makeStyles } from '@mui/material/styles';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import Stack from '@mui/material/Stack';
-
+import { regionObj } from '../types/regionObj';
+import RegionsList from '../RegionsList/RegionsList';
+import RegionDetails from '../RegionDetails/RegionDetails';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 
 interface ChampionFormProps {
@@ -24,6 +27,7 @@ interface ChampionFormProps {
         rol: string;
         dificulty: string;
         description: string;
+        regionId:number;
       
     }) => void;
     onEdit: (id: number, editChampionElem: {
@@ -32,12 +36,12 @@ interface ChampionFormProps {
         dificulty: string;
         description: string;
     }) => void;
-
+regions:regionObj[];
 }
 
 
 
-export const ChampionForm: React.FC<ChampionFormProps> = ({ editId, type, onCreate, onEdit }) => {
+export const ChampionForm: React.FC<ChampionFormProps> = ({ editId, type, onCreate, onEdit,regions }) => {
 const history = useHistory();
     const [formSubmitted, setFormSubmitted] = React.useState(false);
 
@@ -62,6 +66,14 @@ const history = useHistory();
     const handleDescriptionChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
         setDescription(event.target.value);
     }
+//estado para guardar el valor de la region
+    const [region, setRegion] = React.useState(0);
+    const handleRegionChange: React.ChangeEventHandler<HTMLSelectElement> = (event) => {
+        console.log(event.target.value);
+        setRegion(parseFloat(event.target.value));
+    
+    }
+
     const iscaractValid = name.length >= 2 || rol.length >= 2 || dificulty.length >= 2 || description.length >= 10;
     const isImgValid = img.length >= 10;
 
@@ -79,6 +91,7 @@ const history = useHistory();
                         rol: rol,
                         dificulty: dificulty,
                         description: description,
+                        regionId: region,
 
                     });
                     setName('');
@@ -86,6 +99,8 @@ const history = useHistory();
                     setDificulty('');
                     setRol('');
                     setDescription('');
+                    setRegion(0);
+
                     setFormSubmitted(false);
                     history.push('/champlist');
 
@@ -110,13 +125,12 @@ const history = useHistory();
         <form className="ChampionForm"
             onSubmit={handleSubmit}>
 
-            <h1> {type === 'create' ? 'New' : 'Edit'} Champion {editId}</h1>
+            <h1 className ="championForm__h1"> {type === 'create' ? 'New' : 'Edit'} Champion {editId}</h1>
 
 
-            <label>
+            <label className ="champ__label">
                 Champion's Name
-                <TextField 
-                label =" name" variant="outlined"  name="name" type="text"
+                <input className="champ__input" name="name" type="text"
                     onChange={handleNameChange}
                     value={name} />
                 {formSubmitted && !iscaractValid &&
@@ -128,9 +142,11 @@ const history = useHistory();
 
             </label>
 
-            <label>
+            <label className="champ__label">
                 Img URL
-                <TextField label ="URL Img" variant="outlined" name="img" type="text" 
+                <input 
+                className="champ__input"
+                 name="img" type="text" 
                     onChange={handleImgChange}
                     value={img} />
                 {formSubmitted && !isImgValid &&
@@ -143,9 +159,10 @@ const history = useHistory();
 
             </label>
 
-            <label>
+            <label className="champ__label">
                 Rol
-                <TextField label =" Champion Rol" variant="outlined" name="rol" type="text"
+                <input className="champ__input"
+                 name="rol" type="text"
                     onChange={handleRolChange}
                     value={rol} />
                 {formSubmitted && !iscaractValid &&
@@ -154,13 +171,12 @@ const history = useHistory();
                     You need add a rol<strong>check it out!</strong>
                   </Alert> 
                 
-               
                 }
 
             </label>
-            <label>
+            <label className="champ__label">
                 Dificulty
-                <TextField label ="Dificulty" variant="outlined" name="dificulty" type="text"
+                <input className="champ__input" name="dificulty" type="text"
                     onChange={handleDificultyChange}
                     value={dificulty} />
                 {formSubmitted && !iscaractValid &&
@@ -172,9 +188,9 @@ const history = useHistory();
                 }
 
             </label>
-            <label>
+            <label className= "champ__label">
                 Description
-                <TextField  label ="Descirption" variant="outlined" multiline 
+                < input  className = "champ__input"
                 name="description" type="text"
                     onChange={handleDescriptionChange}
                     value={description} />
@@ -188,13 +204,18 @@ const history = useHistory();
 
             </label>
             
+            <label className ="champ__label" >
+                Champion Region
+              <select onChange={handleRegionChange}
+              value= {region}> 
+                  {regions.map(region =>{
+                      return <option 
+                      key={region.id}
+                      value = {region.id}
+                      >{region.name}</option> 
+                  })}
+                  </select>
 
-            
-            <label>
-                Champion's Region
-                <TextField label =" Champion Rol" variant="outlined" name="rol" type="text"
-                    onChange={handleRolChange}
-                    value={rol} />
                 {formSubmitted && !iscaractValid &&
                     <Alert severity="error">
                     <AlertTitle>Error</AlertTitle>

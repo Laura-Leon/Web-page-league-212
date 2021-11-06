@@ -52,8 +52,8 @@ display: flex;
 flex-direction: column;
 align-items: center;
 margin: 20px;
-
 }
+
 .championlist__cont h1{
 margin: 16px;
 padding: 0;
@@ -61,8 +61,7 @@ font-family: 'Zen Old Mincho';
 font-weight: bolder;
 font-size: 46px;
 }
-
-  
+ 
 .App__imgt{
 width: 40px;
 height: auto;
@@ -89,6 +88,12 @@ height: auto;
 }
 .App__line{
     height: 20px;
+}
+.championForm__container{
+    display: flex;
+justify-content: center;
+    
+
 }
 footer{
 

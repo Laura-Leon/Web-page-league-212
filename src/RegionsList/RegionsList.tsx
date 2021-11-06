@@ -13,10 +13,13 @@ const RegionsList: React.FC<RegionsListProps> = ({ regions}) => {
 {regions.map((region)=>{
   return <div
     key ={region.id}>
+      <div>
       <Link 
       color="dark"
       text = {region.name}
-      url={`/regions/${region.id}`} />
+      url={`/regions/${region.id}`} />  
+      </div>
+      
     
   </div>
 })}

@@ -18,6 +18,8 @@ import leonah1 from '../images/leona_h1.png';
 import { regionObj } from '../types/regionObj';
 import RegionsList from '../RegionsList/RegionsList';
 import RegionDetails from '../RegionDetails/RegionDetails';
+import { ThemeProvider } from '@emotion/react';
+import { theme } from '../utils/theme';
 
 
 
@@ -48,10 +50,10 @@ function App() {
           description: 'Leona uses her shield to perform her next basic attack, dealing bonus magic damage and stunning the target...',
         }
       ],
-     
+
     },
 
-    
+
     {
       id: 1,
       regionId: 1,
@@ -69,40 +71,40 @@ function App() {
           description: 'Leona uses her shield to perform her next basic attack, dealing bonus magic damage and stunning the target...',
         }
       ],
-     
+
     }
   ]);
-const [regions, setRegions] = React.useState<regionObj[]>([
-{
-  id:0,
-  name: 'Targon',
-  description: 'blablalbalblab',
-  img: 'https://universe-meeps.leagueoflegends.com/v1/assets/images/mttargon-once-in-a-lifetime.jpg',
-  
-},
-{
-  id:1,
-  name: 'Piltover',
-  description: 'blablalbalblab',
-img: 'https://mobalytics.gg/wp-content/uploads/1969/10/Piltover-splash-2-1024x575.jpg',  
-}
+  const [regions, setRegions] = React.useState<regionObj[]>([
+    {
+      id: 0,
+      name: 'Targon',
+      description: 'blablalbalblab',
+      img: 'https://universe-meeps.leagueoflegends.com/v1/assets/images/mttargon-once-in-a-lifetime.jpg',
+
+    },
+    {
+      id: 1,
+      name: 'Piltover',
+      description: 'blablalbalblab',
+      img: 'https://mobalytics.gg/wp-content/uploads/1969/10/Piltover-splash-2-1024x575.jpg',
+    }
 
 
-])
+  ])
   const handleCreate = (newChampion: {
     name: string;
     img: string;
     rol: string;
     dificulty: string;
     description: string;
+    regionId: number;
 
-    //skins:[]
   }) => {
     console.log('new Champion', newChampion);
     const arrayCopy = championElems.slice(); // copia del arreglo
     arrayCopy.push({ //agrega nuevo elemento con la informacion recibida
       id: Math.random(),
-      regionId: 0,
+      regionId: newChampion.regionId,
       img: newChampion.img,
       name: newChampion.name,
       rol: newChampion.rol,
@@ -194,53 +196,54 @@ img: 'https://mobalytics.gg/wp-content/uploads/1969/10/Piltover-splash-2-1024x57
   }
 
 
-  return (
+  return (<ThemeProvider theme={theme}>
     <HashRouter>
       <div className="principal">
         <nav className="App__nav">
           <img className="App__img" alt=" " src="https://universe.leagueoflegends.com/images/LOL.png" />
           <div className="App__LinkGroup">
-            <Link 
-            color="light"
+            <Link
+              color="light"
               text="Home"
-              url="/form"/>
+              url="/form" />
             <Link color="light"
               text="Champion"
               url="champlist"></Link>
             <Link color="light"
               text="Region"
               url="regions"></Link>
-            <Link  color="light"
+            <Link color="light"
               text="Skins"
               url=""></Link>
-            
+
           </div>
-       
+
           <img className="App__img" alt=" " src="https://www.pinclipart.com/picdir/big/73-739007_icon-profile-picture-circle-png-clipart.png" />
         </nav>
         <Switch>
           <Route path="/form">
-
-            <ChampionForm
-              editId={editId}
-              type={formType}
-              onCreate={handleCreate}
-              onEdit={handleEdit}>
-            </ChampionForm>
-
+            <section className="championForm__container">
+              <ChampionForm
+                editId={editId}
+                type={formType}
+                onCreate={handleCreate}
+                onEdit={handleEdit}
+                regions={regions}>
+              </ChampionForm>
+            </section>
           </Route>
 
           <Route path="/champlist">
             <section className="App__title">
               <img className="App__imgt" alt=" " src="https://universe.leagueoflegends.com/esimages/content_type_icon_champion__3nwJQ.png" />
               <div className="championlist__cont">
-              <img className="App__line" alt=" " src={line1} />
+                <img className="App__line" alt=" " src={line1} />
                 <h1>Champions</h1>
                 <img className="App__line" alt=" " src={line2} />
               </div>
             </section>
             <section className="champlist__container">
-            
+
               {championElems.map((elem) => {
                 return <Champion key={elem.id}
                   name={elem.name}
@@ -261,7 +264,7 @@ img: 'https://mobalytics.gg/wp-content/uploads/1969/10/Piltover-splash-2-1024x57
                 <p> © 2021 Riot Games, Inc. Todos los derechos reservados.</p>
                 <img className="footer__img" alt=" " src="https://content.totalwar.com/total-war/com.totalwar.www2019/uploads/2019/04/01144512/footer-esrb-teen-violence_rome2web.jpg" />
               </section>
-              </footer>
+            </footer>
 
 
           </Route>
@@ -271,29 +274,29 @@ img: 'https://mobalytics.gg/wp-content/uploads/1969/10/Piltover-splash-2-1024x57
             </ChampionDetails>
           </Route>
           <Route path="/regions" exact>
-          <section className="App__title">
+            <section className="App__title">
               <img className="App__imgt" alt=" " src="https://universe.leagueoflegends.com/esimages/content_type_icon_champion__3nwJQ.png" />
               <div className="championlist__cont">
-              <img className="App__line" alt=" " src={line1} />
+                <img className="App__line" alt=" " src={line1} />
                 <h1>Regions</h1>
                 <img className="App__line" alt=" " src={line2} />
               </div>
             </section>
-<section>
-            <RegionsList
-            regions = {regions}
-            />
-</section>
+            <section>
+              <RegionsList
+                regions={regions}
+              />
+            </section>
           </Route>
           <Route path="/regions/:id">
 
-   
-            <RegionDetails 
-            regions={regions}
-            championElems = {championElems}>
-              
+
+            <RegionDetails
+              regions={regions}
+              championElems={championElems}>
+
             </RegionDetails>
-            </Route>
+          </Route>
 
 
           <Route path="/404">
@@ -305,6 +308,7 @@ img: 'https://mobalytics.gg/wp-content/uploads/1969/10/Piltover-splash-2-1024x57
 
       </div>
     </HashRouter>
+  </ThemeProvider>
 
 
   )

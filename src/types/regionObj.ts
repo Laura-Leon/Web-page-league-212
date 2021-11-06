@@ -5,5 +5,4 @@ export type regionObj = {
     img: string;
     description: string;
 
-  
   }

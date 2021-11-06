@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 import { Champion } from '../Champion/Champion';
 import { ChampionElemObj } from '../types/ChampionElemObj';
-import { RegionElemObj } from '../types/RegionElemObj';
+
 import { regionObj } from '../types/regionObj';
 
 interface RegionDetailsProps {
@@ -30,7 +30,19 @@ const regionChampionElems = championElems.filter((elem) => {
    return elem.regionId ===id;
 });
     return (<div>
+
+
+<div className="details__container">
+            <img className="details__img" src={region?.img}></img>
+            <section className="details__info">
+                <h1 className="details___name" >{region?.name}</h1>
+                <h4 className="details__h4">BIOGRAPHY</h4>
+                <p className="details__p">{region?.description}</p>
+                
+            </section>
+        </div>
                 <h2> {region?.name} </h2>
+
                 <p>Champions in this region {regionChampionElems.length}</p>
                 {regionChampionElems.map((elem) => {
                 return <Champion key={elem.id}
