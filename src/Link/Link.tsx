@@ -6,12 +6,18 @@ import {NavLink} from 'react-router-dom';
 interface LinkProps {
     text: string;
     url: string;
+   actives?: boolean;
+  color?:'light'|'dark';
 
-    actives?: boolean;
 }
 
 export const Link: React.FC<LinkProps>  = (props) =>{
-    return <NavLink className= "Link" activeClassName ="Link--active" to={props.url}>
-      {props.text}
+const {url,text, color = 'light'} = props;
+
+    return <NavLink 
+    className= {`Link Link--${color}` }
+    activeClassName ="Link--active" 
+    to={url}>
+      {text}
     </NavLink>;
 }

@@ -14,9 +14,10 @@ interface ChampionDetailsProps {
 
 
 const ChampionDetails: React.FC<ChampionDetailsProps> = ({ list, onCreateAbilities }) => {
-
     const { id: idString } = useParams<{ id: string }>();
     const id = parseFloat(idString);
+
+    //find se usa para encontrar el elemneto correspondiente al id del parametro de a ruta
     const elem = list.find((elem) => {
         /*funciona igual que un if else */
         return elem.id === id;

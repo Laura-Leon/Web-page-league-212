@@ -188,6 +188,25 @@ const history = useHistory();
 
             </label>
             
+
+            
+            <label>
+                Champion's Region
+                <TextField label =" Champion Rol" variant="outlined" name="rol" type="text"
+                    onChange={handleRolChange}
+                    value={rol} />
+                {formSubmitted && !iscaractValid &&
+                    <Alert severity="error">
+                    <AlertTitle>Error</AlertTitle>
+                    You need add a rol<strong>check it out!</strong>
+                  </Alert> 
+                
+               
+                }
+            </label>
+
+
+
             <Button type ="submit" size ="medium" variant="contained"><span>{type === 'create' ? 'Create new Champion' : 'Save changes'}</span></Button>
 
         </form>

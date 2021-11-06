@@ -15,6 +15,9 @@ import { SkinElemObj } from '../types/SkinElemObj';
 import line1 from '../images/line1.png';
 import line2 from '../images/line2.png';
 import leonah1 from '../images/leona_h1.png';
+import { regionObj } from '../types/regionObj';
+import RegionsList from '../RegionsList/RegionsList';
+import RegionDetails from '../RegionDetails/RegionDetails';
 
 
 
@@ -30,6 +33,7 @@ function App() {
 
     {
       id: 0,
+      regionId: 0,
       img: 'https://www.pixel4k.com/wp-content/uploads/2019/11/solar-lunar-eclipse-leona-lol-league-of-legends-lol_1574105129.jpg',
       name: 'Leona',
       rol: 'Tank',
@@ -44,18 +48,47 @@ function App() {
           description: 'Leona uses her shield to perform her next basic attack, dealing bonus magic damage and stunning the target...',
         }
       ],
-      /* skins:[
-         {
-           id:0.1,
-           name: 'Dawnbringer Leona',
-           img: 'https://cdnb.artstation.com/p/assets/images/images/036/132/497/large/qi-mang-10m.jpg?1616794088',
-          theme: 'Eclipse',
-           description: 'In the mirror of the glass...'
-         }
-       ]*/
+     
+    },
+
+    
+    {
+      id: 1,
+      regionId: 1,
+      img: 'https://i.redd.it/qzbe0nz9vlw71.png',
+      name: 'Caitlyn',
+      rol: 'ADCarry',
+      dificulty: 'Easy',
+      description: 'econocida como la mejor pacificadora, Caitlyn también es la mejor oportunidad de Piltóver para deshacerse de los elementos criminales elusivos de su ciudad. A veces hace equipo con Vi y es un buen contrapunto para la naturaleza más impulsiva de su compañera. Aunque carga un rifle hextech único, el arma más poderosa de Caitlyn es su intelecto superior, el cual le permite tender trampas elaboradas para malhechores que son suficientemente tontos para operar en la Ciudad del Progreso',
+      abilities: [
+        {
+          id: 0,
+          name: 'Solar Punch',
+          img: 'https://64.media.tumblr.com/2f81751c6860614fa87e03c02b965f12/b7a6a0e97b82e3c1-cd/s500x750/3261355ae4aeade51e5ae34d65cd27445c01ddeb.png',
+          keyboard: 'Q',
+          description: 'Leona uses her shield to perform her next basic attack, dealing bonus magic damage and stunning the target...',
+        }
+      ],
+     
     }
   ]);
+const [regions, setRegions] = React.useState<regionObj[]>([
+{
+  id:0,
+  name: 'Targon',
+  description: 'blablalbalblab',
+  img: 'https://universe-meeps.leagueoflegends.com/v1/assets/images/mttargon-once-in-a-lifetime.jpg',
+  
+},
+{
+  id:1,
+  name: 'Piltover',
+  description: 'blablalbalblab',
+img: 'https://mobalytics.gg/wp-content/uploads/1969/10/Piltover-splash-2-1024x575.jpg',  
+}
 
+
+])
   const handleCreate = (newChampion: {
     name: string;
     img: string;
@@ -69,6 +102,7 @@ function App() {
     const arrayCopy = championElems.slice(); // copia del arreglo
     arrayCopy.push({ //agrega nuevo elemento con la informacion recibida
       id: Math.random(),
+      regionId: 0,
       img: newChampion.img,
       name: newChampion.name,
       rol: newChampion.rol,
@@ -166,17 +200,17 @@ function App() {
         <nav className="App__nav">
           <img className="App__img" alt=" " src="https://universe.leagueoflegends.com/images/LOL.png" />
           <div className="App__LinkGroup">
-            <Link
-
+            <Link 
+            color="light"
               text="Home"
-              url="/form" />
-            <Link
+              url="/form"/>
+            <Link color="light"
               text="Champion"
               url="champlist"></Link>
-            <Link
+            <Link color="light"
               text="Region"
-              url=""></Link>
-            <Link
+              url="regions"></Link>
+            <Link  color="light"
               text="Skins"
               url=""></Link>
             
@@ -236,6 +270,32 @@ function App() {
               onCreateAbilities={handleCreateAbility}>
             </ChampionDetails>
           </Route>
+          <Route path="/regions" exact>
+          <section className="App__title">
+              <img className="App__imgt" alt=" " src="https://universe.leagueoflegends.com/esimages/content_type_icon_champion__3nwJQ.png" />
+              <div className="championlist__cont">
+              <img className="App__line" alt=" " src={line1} />
+                <h1>Regions</h1>
+                <img className="App__line" alt=" " src={line2} />
+              </div>
+            </section>
+<section>
+            <RegionsList
+            regions = {regions}
+            />
+</section>
+          </Route>
+          <Route path="/regions/:id">
+
+   
+            <RegionDetails 
+            regions={regions}
+            championElems = {championElems}>
+              
+            </RegionDetails>
+            </Route>
+
+
           <Route path="/404">
             <Page404></Page404>
           </Route>

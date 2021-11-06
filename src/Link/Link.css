@@ -1,14 +1,19 @@
 .Link{
   font-family: 'Zen Old Mincho';
-
 font-weight: bolder;
 font-size: 18px;
     padding: 12px 14px 12px 14px;
-    color: white;
     text-decoration: none;
 }
-.Link--active{
 
+ .Link--light{
+  color: white;
+
+}
+.Link--dark{
+  color:#FAC04F;
+}
+.Link--active{
   padding: 12px 14px 12px 14px;
   color:  #FAC04F;
   text-decoration: none;
