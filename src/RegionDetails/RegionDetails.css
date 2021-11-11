@@ -1,0 +1,21 @@
+.detailsChampion__container{
+    display: flex;
+    justify-content: center;
+    padding: 0;
+  margin-left: 100px;
+  margin-right: 100px;
+
+  list-style: none;
+ 
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+ 
+   
+}

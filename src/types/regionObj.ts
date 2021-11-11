@@ -4,5 +4,6 @@ export type regionObj = {
     name: string;
     img: string;
     description: string;
-
+    champId: number;
+champs: string[];
   }

@@ -1,6 +1,4 @@
 import { AbilityElemObj } from "./AbilityElemObj";
-import { SkinElemObj } from "./SkinElemObj";
-
 
 export type ChampionElemObj = {
     id: number;
@@ -9,11 +7,10 @@ export type ChampionElemObj = {
     rol: string;
     dificulty: string;
     description: string;
-
+    regions: string[];
     regionId: number;
-
     abilities: AbilityElemObj[];
-   // skins:SkinElemObj[];
+
 
   
   }
