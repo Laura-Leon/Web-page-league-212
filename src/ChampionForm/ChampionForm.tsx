@@ -36,12 +36,14 @@ interface ChampionFormProps {
         rol: string;
         dificulty: string;
         description: string;
+        regionId: number;
+        regions: string[];
     }) => void;
     regions: regionObj[];
 }
 
 
-export const ChampionForm: React.FC<ChampionFormProps> = ({championElems, editId, type, onCreate, onEdit, regions }) => {
+export const ChampionForm: React.FC<ChampionFormProps> = ({championElems, editId, type, onCreate, onEdit, regions}) => {
     const history = useHistory();
     const editElem = championElems.find((elem) => {
         return elem.id === editId;
@@ -108,12 +110,18 @@ export const ChampionForm: React.FC<ChampionFormProps> = ({championElems, editId
             history.push('/champlist');
 
         } else if (type === 'Edit' && iscaractValid) {
+            const regionString = regions.map(obj => obj.name);
+
             onEdit(editId!, {
                 img: img,
                 name: name,
                 rol: rol,
                 dificulty: dificulty,
-                description: description
+                description: description,
+                regionId: region,
+
+                regions: regionString,
+
             });
             history.push('/champlist');
         } else {

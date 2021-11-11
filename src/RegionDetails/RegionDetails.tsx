@@ -5,6 +5,8 @@ import { ChampionElemObj } from '../types/ChampionElemObj';
 
 import { regionObj } from '../types/regionObj';
 import './RegionDetails.css';
+import line1 from '../images/line1.png';
+import line2 from '../images/line2.png';
 
 
 interface RegionDetailsProps {
@@ -31,7 +33,7 @@ ejemplo: /authors/3
     const regionChampionElems = championElems.filter((elem) => {
         return elem.regionId === id;
     });
-    return (<div>
+    return (<div >
 
         <div className="details__container">
             <img className="details__img" src={region?.img}></img>
@@ -42,8 +44,15 @@ ejemplo: /authors/3
 
             </section>
         </div>
-        <h2> {region?.name} </h2>
-        <p>Champions in this region {regionChampionElems.length}</p>
+        <div className="regionContainer" >
+       
+        <div className="championlist__cont">
+                <img className="App__line" alt=" " src={line1}   />
+              <p>  Champions in {region?.name} {regionChampionElems.length}  </p>
+              
+                <img className="App__line" alt=" " src={line2} />
+              </div>
+        </div>
         <div className="detailsChampion__container">
 
             {regionChampionElems.map((elem) => {

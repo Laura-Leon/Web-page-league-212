@@ -76,9 +76,7 @@ height: auto;
     padding: 0;
   margin-left: 100px;
   margin-right: 100px;
-
   list-style: none;
- 
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -97,9 +95,13 @@ height: auto;
 .championForm__container{
     display: flex;
 justify-content: center;
-    
+}  
+.graph{
 
+margin: 100px;
 }
+
+
 footer{
 
     background-color: #0F1923;

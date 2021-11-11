@@ -6,12 +6,10 @@ import { ChampionElemObj } from '../types/ChampionElemObj';
 import { AbilityElemObj } from '../types/AbilityElemObj';
 import './ChampionDetails.css';
 
-
 interface ChampionDetailsProps {
     list: ChampionElemObj[];
     onCreateAbilities: (champioinElemId: number, newAbilityElem: AbilityElemObj) => void;
 }
-
 
 const ChampionDetails: React.FC<ChampionDetailsProps> = ({ list, onCreateAbilities }) => {
     const { id: idString } = useParams<{ id: string }>();
@@ -64,8 +62,6 @@ const ChampionDetails: React.FC<ChampionDetailsProps> = ({ list, onCreateAbiliti
                   </div> 
                          </div>
                         
-                    
-                  //  li key={abilityElem.id} >{abilityElem.name} - {abilityElem.img}</li>
                 })} </section>
                 <AbilityForm onCreate={handleCreateAbilityElem} />
 

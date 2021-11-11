@@ -6,4 +6,6 @@ export type regionObj = {
     description: string;
     champId: number;
 champs: string[];
+
+
   }

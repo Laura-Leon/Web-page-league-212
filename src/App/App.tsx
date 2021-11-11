@@ -4,7 +4,7 @@ import './App.css';
 import { Champion } from '../Champion/Champion';
 import { Link } from '../Link/Link';
 import { ChampionForm } from '../ChampionForm/ChampionForm';
-import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { HashRouter, Route, Switch, Redirect, useHistory } from 'react-router-dom';
 import ChampionDetails from '../ChampionDetails/ChampionDetails';
 import Page404 from '../Page404/Page404';
 import { ChampionElemObj } from '../types/ChampionElemObj';
@@ -21,6 +21,7 @@ import { Bar } from 'react-chartjs-2';
 import { RegionForm } from '../RegionForm/RegionForm';
 import { getChartdata } from '../utils/getCharData';
 import { getABChartdata } from '../utils/getABCharData';
+import { useLocalStorage } from '../utils/UseLocalStorage';
 
 
 
@@ -28,9 +29,10 @@ import { getABChartdata } from '../utils/getABCharData';
 function App() {
   const [formType, setFormType] = React.useState<'create' | 'Edit'>('create');
   const [editId, setEditId] = React.useState<number | null>(null);
+  const history = useHistory();
 
 
-  const [championElems, setChampionElems] = React.useState<ChampionElemObj[]>([
+  const [championElems, setChampionElems] = useLocalStorage<ChampionElemObj[]>('champ',[
 
     {
       id: 0,
@@ -77,7 +79,7 @@ function App() {
     }
   ]);
 
-  const [regions, setRegions] = React.useState<regionObj[]>([
+  const [regions, setRegions] = useLocalStorage<regionObj[]>('region',[
     {
       id: 0,
       name: 'Targon',
@@ -127,6 +129,7 @@ function App() {
   const handleBeginEdit = (editId: number) => {
     setEditId(editId);
     setFormType('Edit');
+    history.push('form')
   }
 
   const handleEdit = (editId: number, editChampionElem: { //edit champion info
@@ -233,7 +236,7 @@ function App() {
 
  console.log(regions);
   return (<ThemeProvider theme={theme}>
-    <HashRouter>
+  
       <div className="principal">
         <nav className="App__nav">
           <img className="App__img" alt=" " src="https://universe.leagueoflegends.com/images/LOL.png" />
@@ -258,7 +261,17 @@ function App() {
         </nav>
         <Switch>
           <Route path="/form">
+          <section className="championForm__container">
+            <RegionForm
+            regions={regions}
+              editId={editId}
+              type={formType}
+              onCreate={handleCreateRegion}
+              onEdit={handleEditRegion}
+              championsOp={championElems}>
+            </RegionForm>
 
+             </section>
             <section className="championForm__container">
               <ChampionForm
                 editId={editId}
@@ -271,18 +284,8 @@ function App() {
 
               </ChampionForm>
             </section>
-            <RegionForm
-            regions={regions}
-              editId={editId}
-              type={formType}
-              onCreate={handleCreateRegion}
-              onEdit={handleEditRegion}
-              championsOp={championElems}>
-            </RegionForm>
 
-            <section>
-
-            </section>
+           
 
 
           </Route>
@@ -382,7 +385,8 @@ function App() {
           </Route>
 
           <Route path="/Graph">
-            <Bar data={dataAB} options={{
+            <section>
+            <Bar  data={dataAB} options={{
               indexAxis: 'y',
               elements: {
                 bar: {
@@ -400,6 +404,7 @@ function App() {
                 },
               },
             }} />
+            </section>
 
           </Route>
 
@@ -412,7 +417,7 @@ function App() {
         </Switch>
 
       </div>
-    </HashRouter>
+  
   </ThemeProvider>
 
 
