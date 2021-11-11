@@ -1,23 +1,24 @@
 {
   "files": {
-    "main.css": "/Web-page-league-212/static/css/main.eda065bf.chunk.css",
-    "main.js": "/Web-page-league-212/static/js/main.6a9fd54a.chunk.js",
-    "main.js.map": "/Web-page-league-212/static/js/main.6a9fd54a.chunk.js.map",
-    "runtime-main.js": "/Web-page-league-212/static/js/runtime-main.44c46f4b.js",
-    "runtime-main.js.map": "/Web-page-league-212/static/js/runtime-main.44c46f4b.js.map",
-    "static/js/2.77624f74.chunk.js": "/Web-page-league-212/static/js/2.77624f74.chunk.js",
-    "static/js/2.77624f74.chunk.js.map": "/Web-page-league-212/static/js/2.77624f74.chunk.js.map",
-    "static/js/3.b9059f37.chunk.js": "/Web-page-league-212/static/js/3.b9059f37.chunk.js",
-    "static/js/3.b9059f37.chunk.js.map": "/Web-page-league-212/static/js/3.b9059f37.chunk.js.map",
+    "main.css": "/Web-page-league-212/static/css/main.47b47309.chunk.css",
+    "main.js": "/Web-page-league-212/static/js/main.86f73a5f.chunk.js",
+    "main.js.map": "/Web-page-league-212/static/js/main.86f73a5f.chunk.js.map",
+    "runtime-main.js": "/Web-page-league-212/static/js/runtime-main.c1544153.js",
+    "runtime-main.js.map": "/Web-page-league-212/static/js/runtime-main.c1544153.js.map",
+    "static/js/2.cf692d0d.chunk.js": "/Web-page-league-212/static/js/2.cf692d0d.chunk.js",
+    "static/js/2.cf692d0d.chunk.js.map": "/Web-page-league-212/static/js/2.cf692d0d.chunk.js.map",
+    "static/js/3.57b1de98.chunk.js": "/Web-page-league-212/static/js/3.57b1de98.chunk.js",
+    "static/js/3.57b1de98.chunk.js.map": "/Web-page-league-212/static/js/3.57b1de98.chunk.js.map",
     "index.html": "/Web-page-league-212/index.html",
-    "static/css/main.eda065bf.chunk.css.map": "/Web-page-league-212/static/css/main.eda065bf.chunk.css.map",
-    "static/js/2.77624f74.chunk.js.LICENSE.txt": "/Web-page-league-212/static/js/2.77624f74.chunk.js.LICENSE.txt",
-    "static/media/App.css": "/Web-page-league-212/static/media/background.96c5031f.jpg"
+    "static/css/main.47b47309.chunk.css.map": "/Web-page-league-212/static/css/main.47b47309.chunk.css.map",
+    "static/js/2.cf692d0d.chunk.js.LICENSE.txt": "/Web-page-league-212/static/js/2.cf692d0d.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/Web-page-league-212/static/media/background.96c5031f.jpg",
+    "static/media/valoranlogo.dc932804.png": "/Web-page-league-212/static/media/valoranlogo.dc932804.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.44c46f4b.js",
-    "static/js/2.77624f74.chunk.js",
-    "static/css/main.eda065bf.chunk.css",
-    "static/js/main.6a9fd54a.chunk.js"
+    "static/js/runtime-main.c1544153.js",
+    "static/js/2.cf692d0d.chunk.js",
+    "static/css/main.47b47309.chunk.css",
+    "static/js/main.86f73a5f.chunk.js"
   ]
 }
